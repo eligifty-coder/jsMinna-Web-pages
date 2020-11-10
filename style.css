@@ -618,12 +618,12 @@ section {
       font-size: 14px;
    }
    .latest{
-      top:1926.7px;
+      top:1790.7px;
    }
 }
 @media screen and (min-width:600px) and (max-width:768px) {
    .latest {
-      top: 2008px;
+      top: 2036px;
    }
    .latest-center{
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -744,7 +744,7 @@ section {
 }
 @media screen and (max-width:400px){
    .footer{
-      top: 132rem;
+      top: 123rem;
    }
 }
 
