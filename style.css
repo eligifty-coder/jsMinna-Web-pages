@@ -661,7 +661,7 @@ section {
    position: relative;
    background: var(--dark-blue);
    z-index: 11111;
-   top: 156.5rem;
+   top: 140.5rem;
    padding: 2.5rem 0;
    display: grid;
    place-items: center;
@@ -750,7 +750,7 @@ section {
 
 @media screen and (min-width:900px) and (max-width:1440px) {
    .footer{
-      top: 140.5rem;
+      top: 138.5rem;
    }
    .footer-links{
       grid-template-columns: 1fr 1fr !important;
