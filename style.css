@@ -454,7 +454,7 @@ section {
    padding-bottom:24px;
 }
 
-@media screen and (max-width:375px) {
+@media screen and (max-width:400px) {
    .online p {
       width: 89%;
       padding: 10px;
@@ -471,6 +471,20 @@ section {
    }
    .easyBank .section-center {
       padding: 40px 0;
+   }
+}
+@media screen and (min-width:600px) and (max-width:768px){
+   .next{
+      top: -30px;
+   }
+   .easyBank{
+      top: -185px;
+   }
+   .why P{
+      width: 45%;
+   }
+   .online p{
+      width:48% ;
    }
 }
 @media screen and (min-width:900px) and (max-width:1440px) {
@@ -526,6 +540,7 @@ section {
    }
    
 }
+
 .latest{
    position: absolute;
    top: 1841px;
@@ -593,7 +608,7 @@ section {
    color: var(--lime-green);
 }
 
-@media screen and (max-width:375px){
+@media screen and (max-width:405px){
    .latest-center article h2{
       width: 99%;
       padding-right: 10px;
@@ -603,7 +618,16 @@ section {
       font-size: 14px;
    }
    .latest{
-      top:1789.7px;
+      top:1926.7px;
+   }
+}
+@media screen and (min-width:600px) and (max-width:768px) {
+   .latest {
+      top: 2008px;
+   }
+   .latest-center{
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      column-gap: 30px;
    }
 }
 @media screen and (min-width:900px) and (max-width:1440px) {
@@ -718,9 +742,9 @@ section {
    color:var(--very-light-gray);
    font-size: 12px;
 }
-@media screen and (max-width:375px){
+@media screen and (max-width:400px){
    .footer{
-      top: 123rem;
+      top: 132rem;
    }
 }
 
@@ -743,5 +767,10 @@ section {
       transform: translateX(240px);
       justify-self: end;
       align-self: start;
+   }
+}
+@media screen and (min-width:600px) and (max-width:768px) {
+   .footer {
+      top:81rem
    }
 }

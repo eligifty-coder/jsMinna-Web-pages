@@ -324,3 +324,17 @@ button {
    z-index: 1;
    display: none;
 }
+
+.container{
+   position: relative;
+}
+.container > .fa{
+   position: absolute;
+   color: #999;
+   top: 20px;
+   left: 90%;
+   font-size: 12px;
+}
+.container > .close{
+   z-index: -1;
+}

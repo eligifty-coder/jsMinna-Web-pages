@@ -13,6 +13,9 @@ let last = document.querySelector(".last")
 let confirmed = document.querySelector(".confirmed")
 let passed = document.querySelector(".passed")
 let checked = document.querySelector(".checked")
+let faOpen = document.querySelector(".open")
+let faClose = document.querySelector(".close")
+let thisValue;
 const checkToEnableArr=[]
 // disable sign up button
 const checkToDisableFun = () => {
@@ -28,9 +31,11 @@ const checkToDisableFun = () => {
    item.onchange = checkToValidateFun
 })
 }
+
 document.addEventListener('DOMContentLoaded', checkToDisableFun);
 function checkToValidateFun() {
-   const thisValue = this.value.trim()
+   thisValue = this.value.trim()
+   let thisElement = this;
    clearInterval(myInterval)
    switch (this.name) {
 				// name testing
@@ -75,7 +80,21 @@ function checkToValidateFun() {
 				// password testing
 				case 'password':
 					reg = /[\d\D]{8,}/;
-					testEvery = reg.test(thisValue);
+               testEvery = reg.test(thisValue);
+               faOpen.onclick = function(){
+                  faOpen.style.zIndex
+                  // let mappedletter;
+                  // console.log(thisValue)
+                  // if(thisValue){
+                  //    console.log(faClose.style)
+                  //    mappedletter = thisValue.split("").map((item)=>{
+                  //       return `.`
+                  //    }).join("")
+                  //    console.log(mappedletter)
+                  //    console.log(thisElement, thisValue)
+                  //    thisElement.value=mappedletter
+                  // }
+               }
 					checkIfEmpty = checkForZeroLengthFun(thisValue);
 					if (checkIfEmpty) {
 						regExpDetail(testEvery, this);
