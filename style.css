@@ -473,7 +473,7 @@ section {
       padding: 40px 0;
    }
 }
-@media screen and (min-width:600px) and (max-width:768px){
+@media screen and (min-width:600px) and (max-width:775px){
    .next{
       top: -30px;
    }
@@ -621,9 +621,9 @@ section {
       top:1790.7px;
    }
 }
-@media screen and (min-width:600px) and (max-width:768px) {
+@media screen and (min-width:600px) and (max-width:805px) {
    .latest {
-      top: 2036px;
+      top: 2006px;
    }
    .latest-center{
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
