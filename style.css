@@ -750,7 +750,7 @@ section {
 
 @media screen and (min-width:900px) and (max-width:1440px) {
    .footer{
-      top: 145.5rem;
+      top: 140.5rem;
    }
    .footer-links{
       grid-template-columns: 1fr 1fr !important;
