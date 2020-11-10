@@ -14,7 +14,9 @@ const checkToDisableFun=()=>{
    rotateSection.classList.add('rotated')
    const toggleDisable = inputs.filter(item => item.value.length == 0)
    if (toggleDisable) {
-      loginBtn.disabled = true
+		loginBtn.disabled = true
+		loginBtn.style.backgroundImage = 'linear-gradient(#ccc, #ccc)';
+		loginBtn.style.cursor = 'not-allowed';
    }
    inputs.forEach(item => {
    item.dataset['enable']=0
@@ -63,8 +65,8 @@ function checkForZeroLengthFun(thisValue){
 function emptyFieldValidationFun(ele) {
 	let valueToBeInserted = `field cannot be empty, blank space not allowed`
 	loginBtn.disabled = true
-	loginBtn.classList.add('disabledBtn');
-	;
+	loginBtn.style.backgroundImage = 'linear-gradient(#ccc, #ccc)';
+	loginBtn.style.cursor = 'not-allowed';
 	myInterval = setTimeout(() => {
 		errorMessageFun(ele, valueToBeInserted)
 	}, 500);
@@ -78,7 +80,9 @@ function regExpDetail(test, ele) {
 					}
 					if (!test) {
 						loginBtn.disabled = true
-						loginBtn.classList.add('disabledBtn');
+						loginBtn.style.backgroundImage =
+							'linear-gradient(#ccc, #ccc)';
+							loginBtn.style.cursor="not-allowed"
 						let valueToBeInserted = `wrong input fill the ${ele.name} field appropriately`
 						myInterval = setTimeout(() => {
 							errorMessageFun(emailed, valueToBeInserted)
@@ -90,13 +94,16 @@ function regExpDetail(test, ele) {
 					if (!checkForZeroLengthFun) {
 						valueToBeInserted = `field cannot be empty, blank space not allowed`
 						loginBtn.disabled = true
+						loginBtn.style.backgroundImage = 'linear-gradient(#ccc, #ccc)';
+						loginBtn.style.cursor = 'not-allowed';
 					}
 					if (test) {
 						ele.dataset['enable'] = 1
 					}
 					if (!test) {
 						loginBtn.disabled = true
-						loginBtn.classList.add('disabledBtn');
+						loginBtn.style.backgroundImage = 'linear-gradient(#ccc, #ccc)';
+						loginBtn.style.cursor = 'not-allowed';
 						let valueToBeInserted = `${ele.name} field should contain atleast 8 characters`
 						myInterval = setTimeout(() => {
 							errorMessageFun(passed, valueToBeInserted);
@@ -110,7 +117,8 @@ function regExpDetail(test, ele) {
 					if (!ele.checked) {
 						let valueToBeInserted = `kindly tick the box to agree`
 						loginBtn.disabled = true
-						loginBtn.classList.add('disabledBtn')
+						loginBtn.style.backgroundImage = 'linear-gradient(#ccc, #ccc)';
+						loginBtn.style.cursor = 'not-allowed';
 						myInterval = setTimeout(() => {
 							errorMessageFun(checked, valueToBeInserted)
 						}, 500)
@@ -122,6 +130,8 @@ function regExpDetail(test, ele) {
 function errorMessageFun(elebound, valueToBeInserted) {
 	elebound.style.display = 'inline'
 	loginBtn.disabled = true
+	loginBtn.style.backgroundImage = 'linear-gradient(#ccc, #ccc)';
+	loginBtn.style.cursor = 'not-allowed';
 	elebound.innerHTML = valueToBeInserted
 	elebound.style.color = 'red'
 	elebound.style.fontSize = '12px'
@@ -137,7 +147,8 @@ function enableSignUpBtn(arr){
    let checkEnable = arr.every(item=>item.dataset['enable']==1)
    if(checkEnable){
 		loginBtn.disabled=false
-		loginBtn.classList.add('disabledBtn');
+		loginBtn.style.backgroundImage="linear-gradient(to right, hsl(136, 65%, 51%), hsl(192, 70%, 51%) 80%)";
+		loginBtn.style.cursor="pointer"
       myForm.onsubmit = loginFun
    }
 }
