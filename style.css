@@ -473,7 +473,7 @@ section {
       padding: 40px 0;
    }
 }
-@media screen and (min-width:600px) and (max-width:775px){
+@media screen and (min-width:600px) and (max-width:780px){
    .next{
       top: -30px;
    }
@@ -623,7 +623,7 @@ section {
 }
 @media screen and (min-width:600px) and (max-width:805px) {
    .latest {
-      top: 2006px;
+      top: 81.6%;
    }
    .latest-center{
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -769,8 +769,8 @@ section {
       align-self: start;
    }
 }
-@media screen and (min-width:600px) and (max-width:768px) {
+@media screen and (min-width:600px) and (max-width:780px) {
    .footer {
-      top:81rem
+      top:80rem
    }
 }

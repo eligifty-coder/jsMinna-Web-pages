@@ -14,119 +14,137 @@ let confirmed = document.querySelector(".confirmed")
 let passed = document.querySelector(".passed")
 let checked = document.querySelector(".checked")
 let faOpen = document.querySelector(".open")
-let faClose = document.querySelector(".close")
+let faOpens = document.querySelector(".opens")
 let thisValue;
-const checkToEnableArr=[]
+const checkToEnableArr = []
 // disable sign up button
 const checkToDisableFun = () => {
    inputs = Array.from(inputs)
    rotateSection.classList.add('rotated')
    const toggleDisable = inputs.filter(item => item.value.length == 0)
    if (toggleDisable) {
-      singUpBtn. disabled = true
+      singUpBtn.disabled = true
       singUpBtn.classList.add('disabledBtn')
    }
    inputs.forEach(item => {
-   item.dataset['enable']=0
-   item.onchange = checkToValidateFun
-})
+      item.dataset['enable'] = 0
+      item.onchange = checkToValidateFun
+   })
 }
 
 document.addEventListener('DOMContentLoaded', checkToDisableFun);
+
 function checkToValidateFun() {
    thisValue = this.value.trim()
    let thisElement = this;
    clearInterval(myInterval)
    switch (this.name) {
-				// name testing
-				case 'firstName':
-					reg = /[a-zA-Z]+/i;
-					const valArr = thisValue.split('');
-					testEvery = valArr.every((item) => {
-						return reg.test(item);
-					});
-					checkIfEmpty = checkForZeroLengthFun(thisValue);
-					if (checkIfEmpty) {
-						regExpDetail(testEvery, this);
-					} else {
-						emptyFieldValidationFun(first);
-					}
-					break;
-				case 'lastName':
-					reg = /[a-zA-Z]+/i;
-					const valArrL = thisValue.split('');
-					testEvery = valArrL.every((item) => {
-						return reg.test(item);
-					});
-					checkIfEmpty = checkForZeroLengthFun(thisValue);
-					if (checkIfEmpty) {
-						regExpDetail(testEvery, this);
-					} else {
-						emptyFieldValidationFun(last);
-					}
-					break;
-				// email testing
-				case 'email':
-					reg = /^\w+([\.-_]?\w+)*@\w+([\.-]?\w+)*\.(\w{2,3})+$/;
-					testEvery = reg.test(thisValue);
-					checkIfEmpty = checkForZeroLengthFun(thisValue);
-					if (checkIfEmpty) {
-						regExpDetail(testEvery, this);
-					} else {
-						emptyFieldValidationFun(emailed);
-					}
-					// checkToEnableFun(testEvery)
-					break;
-				// password testing
-				case 'password':
-					reg = /[\d\D]{8,}/;
-               testEvery = reg.test(thisValue);
-               faOpen.onclick = function(){
-                  faOpen.style.zIndex
-                  // let mappedletter;
-                  // console.log(thisValue)
-                  // if(thisValue){
-                  //    console.log(faClose.style)
-                  //    mappedletter = thisValue.split("").map((item)=>{
-                  //       return `.`
-                  //    }).join("")
-                  //    console.log(mappedletter)
-                  //    console.log(thisElement, thisValue)
-                  //    thisElement.value=mappedletter
-                  // }
-               }
-					checkIfEmpty = checkForZeroLengthFun(thisValue);
-					if (checkIfEmpty) {
-						regExpDetail(testEvery, this);
-					} else {
-						emptyFieldValidationFun(passed);
-					}
-					break;
-				// confirm password testing
-				case 'confirmPassword':
-					reg = this.parentElement.previousElementSibling.children[0].value
-					testEvery = reg == thisValue
-					checkIfEmpty = checkForZeroLengthFun(thisValue)
-					if (checkIfEmpty) {
-						regExpDetail(testEvery, this)
-					} else {
-						emptyFieldValidationFun(confirmed)
-					}
-					break;
-				case 'checkbox':
-               testEvery = this.checked? true:false
-					regExpDetail(testEvery, this)
-					break
-			}
+      // name testing
+      case 'firstName':
+         reg = /[a-zA-Z]+/i;
+         const valArr = thisValue.split('');
+         testEvery = valArr.every((item) => {
+            return reg.test(item);
+         });
+         checkIfEmpty = checkForZeroLengthFun(thisValue);
+         if (checkIfEmpty) {
+            regExpDetail(testEvery, this);
+         } else {
+            emptyFieldValidationFun(first);
+         }
+         break;
+      case 'lastName':
+         reg = /[a-zA-Z]+/i;
+         const valArrL = thisValue.split('');
+         testEvery = valArrL.every((item) => {
+            return reg.test(item);
+         });
+         checkIfEmpty = checkForZeroLengthFun(thisValue);
+         if (checkIfEmpty) {
+            regExpDetail(testEvery, this);
+         } else {
+            emptyFieldValidationFun(last);
+         }
+         break;
+         // email testing
+      case 'email':
+         reg = /^\w+([\.-_]?\w+)*@\w+([\.-]?\w+)*\.(\w{2,3})+$/;
+         testEvery = reg.test(thisValue);
+         checkIfEmpty = checkForZeroLengthFun(thisValue);
+         if (checkIfEmpty) {
+            regExpDetail(testEvery, this);
+         } else {
+            emptyFieldValidationFun(emailed);
+         }
+         // checkToEnableFun(testEvery)
+         break;
+         // password testing
+      case 'password':
+         reg = /[\d\D]{8,}/;
+         let thisValuex = this.value;
+         testEvery = reg.test(thisValuex);
+         faOpen.onclick = function () {
+            if(faOpen.classList.contains("fa-eye")){
+               mappedletter = thisValuex.split("").map(() => {
+                  return `.`
+               }).join("")
+               thisElement.value = mappedletter
+               faOpen.classList.remove("fa-eye")
+               faOpen.classList.add("fa-eye-slash")
+            }else{
+               faOpen.classList.add("fa-eye")
+               faOpen.classList.remove("fa-eye-slash")
+               thisElement.value=thisValuex
+            }
+         }
+         checkIfEmpty = checkForZeroLengthFun(thisValuex);
+         if (checkIfEmpty) {
+            regExpDetail(testEvery, this);
+         } else {
+            emptyFieldValidationFun(passed);
+         }
+         break;
+         // confirm password testing
+      case 'confirmPassword':
+         reg = this.parentElement.previousElementSibling.children[0]
+         reg=this.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.value
+         let thisValues= this.value
+         testEvery = reg == thisValues
+         faOpens.onclick = function () {
+            if(faOpens.classList.contains("fa-eye")){
+               mappedletter = thisValues.split("").map(() => {
+                  return `.`
+               }).join("")
+               thisElement.value = mappedletter
+               faOpens.classList.remove("fa-eye")
+               faOpens.classList.add("fa-eye-slash")
+            }else{
+               faOpens.classList.add("fa-eye")
+               faOpens.classList.remove("fa-eye-slash")
+               thisElement.value=thisValues
+            }
+         }
+         checkIfEmpty = checkForZeroLengthFun(thisValues)
+         if (checkIfEmpty) {
+            regExpDetail(testEvery, this)
+         } else {
+            emptyFieldValidationFun(confirmed)
+         }
+         break;
+      case 'checkbox':
+         testEvery = this.checked ? true : false
+         regExpDetail(testEvery, this)
+         break
+   }
 }
 
 // emptyFieldValidationFun
-function emptyFieldValidationFun(ele){
+function emptyFieldValidationFun(ele) {
    let valueToBeInserted = `field cannot be empty, blank space not allowed`
-   singUpBtn. disabled = true;
+   singUpBtn.disabled = true;
    singUpBtn.classList.add('disabledBtn')
    myInterval = setTimeout(() => {
-      errorMessageFun( ele, valueToBeInserted)
+      errorMessageFun(ele, valueToBeInserted)
    }, 500)
 }
 // regExp MAtch
@@ -134,109 +152,109 @@ function regExpDetail(test, ele) {
    switch (ele.name) {
       // Fname Validation
       case "firstName":
-         if(test){
-            ele.dataset['enable']=1
+         if (test) {
+            ele.dataset['enable'] = 1
          }
          if (!test) {
-            singUpBtn. disabled = true;
+            singUpBtn.disabled = true;
             singUpBtn.classList.add('disabledBtn')
             let valueToBeInserted = `${ele.name} field  shouldn't contain any number or symbol`
             myInterval = setTimeout(() => {
-               errorMessageFun(first,valueToBeInserted)
+               errorMessageFun(first, valueToBeInserted)
             }, 500)
          }
          break
-         case "lastName":
-         if(test){
-            ele.dataset['enable']=1
+      case "lastName":
+         if (test) {
+            ele.dataset['enable'] = 1
          }
          if (!test) {
-            singUpBtn. disabled = true;
+            singUpBtn.disabled = true;
             singUpBtn.classList.add('disabledBtn')
             let valueToBeInserted = `${ele.name} field  shouldn't contain any number or symbol`
             myInterval = setTimeout(() => {
-               errorMessageFun(last,  valueToBeInserted)
+               errorMessageFun(last, valueToBeInserted)
             }, 500)
          }
          break
          // email validation
-         case "email":
-         if(test){
+      case "email":
+         if (test) {
             ele.dataset['enable'] = 1
          }
          if (!test) {
-            singUpBtn. disabled = true;
+            singUpBtn.disabled = true;
             singUpBtn.classList.add('disabledBtn')
             let valueToBeInserted = `wrong input fill the ${ele.name} field appropriately`
             myInterval = setTimeout(() => {
                errorMessageFun(emailed, valueToBeInserted)
             }, 500)
          }
-         
+
          break
       case "password":
-         if(!checkForZeroLengthFun){
-            valueToBeInserted= `field cannot be empty, blank space not allowed`
-            singUpBtn. disabled = true;
+         if (!checkForZeroLengthFun) {
+            valueToBeInserted = `field cannot be empty, blank space not allowed`
+            singUpBtn.disabled = true;
             singUpBtn.classList.add('disabledBtn')
          }
-         if(test){
+         if (test) {
             ele.dataset['enable'] = 1
          }
          if (!test) {
-            singUpBtn. disabled = true;
+            singUpBtn.disabled = true;
             singUpBtn.classList.add('disabledBtn')
             let valueToBeInserted = `${ele.name} field should contain atleast 8 characters`
             myInterval = setTimeout(() => {
-               errorMessageFun(passed,valueToBeInserted)
+               errorMessageFun(passed, valueToBeInserted)
             }, 500)
          }
          break
       case "confirmPassword":
-         if(!checkForZeroLengthFun){
-            singUpBtn. disabled = true;
+         if (!checkForZeroLengthFun) {
+            singUpBtn.disabled = true;
             singUpBtn.classList.add('disabledBtn')
-            valueToBeInserted= `field cannot be empty`
+            valueToBeInserted = `field cannot be empty`
          }
-         if(test){
+         if (test) {
             ele.dataset['enable'] = 1
          }
          if (!test) {
-            singUpBtn. disabled = true
+            singUpBtn.disabled = true
             singUpBtn.classList.add('disabledBtn')
             let valueToBeInserted = `password does not match`
             myInterval = setTimeout(() => {
-               errorMessageFun(confirmed,  valueToBeInserted)
+               errorMessageFun(confirmed, valueToBeInserted)
             }, 500)
          }
          break
       case "checkbox":
-         if(ele.checked){
+         if (ele.checked) {
             ele.dataset['enable'] = 1
          }
          if (!ele.checked) {
             let valueToBeInserted = `kindly tick the box to agree`
-            singUpBtn. disabled = true
+            singUpBtn.disabled = true
             singUpBtn.classList.add('disabledBtn')
             myInterval = setTimeout(() => {
                errorMessageFun(checked, valueToBeInserted)
             }, 500)
          }
-   } 
+   }
    enableSignUpBtn(inputs)
 }
 // check for empty field
-function checkForZeroLengthFun(thisValue){
+function checkForZeroLengthFun(thisValue) {
    return Boolean(thisValue.length)
 }
 // error Message
 function errorMessageFun(elebound, valueToBeInserted) {
-   elebound.style.display="inline"
-   singUpBtn. disabled = true
+   elebound.style.display = "inline"
+   singUpBtn.disabled = true
    singUpBtn.classList.add('disabledBtn')
-   elebound.innerHTML= valueToBeInserted
-   elebound.style.color="red"
-   elebound.style.fontSize="12px"
+   elebound.innerHTML = valueToBeInserted
+   elebound.style.color = "red"
+   elebound.style.fontSize = "12px"
    myInterval = setTimeout(() => {
       clearErrorFun(elebound)
    }, 3000)
@@ -246,26 +264,27 @@ function clearErrorFun(eleDiv) {
    eleDiv.style.display = "none"
 }
 // check to enable SignUp Btn
-function enableSignUpBtn(arr){
-   let checkEnable = arr.every(item=>item.dataset['enable']==1)
-   if(checkEnable){
-      singUpBtn. disabled=false
+function enableSignUpBtn(arr) {
+   let checkEnable = arr.every(item => item.dataset['enable'] == 1)
+   if (checkEnable) {
+      singUpBtn.disabled = false
       singUpBtn.classList.remove('disabledBtn')
       myForm.onsubmit = signUpFun
    }
 }
-function signUpFun(){
+
+function signUpFun() {
    event.preventDefault()
-   myInterval= setTimeout(()=>{simulateLoadFun()},1000)
+   myInterval = setTimeout(() => {
+      simulateLoadFun()
+   }, 1000)
 }
 // loader
-function simulateLoadFun(){
-   loader.style.display="block"
-   setTimeout(clearLoadingInterval,3000)
+function simulateLoadFun() {
+   loader.style.display = "block"
+   setTimeout(clearLoadingInterval, 3000)
 }
-function clearLoadingInterval(){
+
+function clearLoadingInterval() {
    loader.style.display = 'none'
 }
-
-
-

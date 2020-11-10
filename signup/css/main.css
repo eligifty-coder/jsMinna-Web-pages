@@ -125,6 +125,10 @@ form input::placeholder{
 }
 .clickBtn{
    position: relative;
+   display: grid;
+   align-items: center;
+   justify-items: start;
+   margin-top: 15px;
 }
 
 
@@ -325,16 +329,11 @@ button {
    display: none;
 }
 
-.container{
+.container > .fa, .open{
    position: relative;
-}
-.container > .fa{
-   position: absolute;
    color: #999;
-   top: 20px;
+   top: -32px;
    left: 90%;
    font-size: 12px;
 }
-.container > .close{
-   z-index: -1;
-}
+
