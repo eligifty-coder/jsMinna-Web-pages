@@ -623,7 +623,7 @@ section {
 }
 @media screen and (min-width:600px) and (max-width:805px) {
    .latest {
-      top: 81.6%;
+      top: 84.7%;
    }
    .latest-center{
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -771,6 +771,6 @@ section {
 }
 @media screen and (min-width:600px) and (max-width:780px) {
    .footer {
-      top:80rem
+      top:86rem
    }
 }
